@@ -17,7 +17,7 @@ It works like a multi-agent development team that can take a natural language re
 
 ---
 
-## Sample Output Calculator
+## Sample Calculator Output
 
 <div style="text-align: center;">
     <img src="resources/Calculator.png" alt="Agentic Code Agent Architecture" width="90%"/>
