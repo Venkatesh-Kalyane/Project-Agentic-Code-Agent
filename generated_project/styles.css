@@ -1,0 +1,129 @@
+/*
+ * Calculator Styles
+ * Responsive layout with CSS Grid and modern design.
+ * Fallbacks for older browsers are included.
+ */
+
+/* ----- Global Resets ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure the body takes full height and uses a clean font */
+html, body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ----- Calculator Container ----- */
+.calculator {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border-radius: 8px;
+}
+
+/* ----- Display ----- */
+.calculator-display {
+    width: 100%;
+    height: 60px;
+    font-size: 2rem;
+    text-align: right;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background: #e9e9e9;
+    color: #333;
+    font-family: 'Courier New', monospace;
+}
+
+/* ----- Keypad Grid ----- */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+/* ----- Buttons ----- */
+.keypad button {
+    padding: 15px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 6px;
+    background: #f7f7f7;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Hover & Active */
+.keypad button:hover {
+    background: #e0e0e0;
+}
+.keypad button:active {
+    transform: scale(0.95);
+    background: #d4d4d4;
+}
+
+/* Special button styles (operator, equals) */
+.keypad button[data-op="clear"],
+.keypad button[data-op="backspace"],
+.keypad button[data-op="percent"],
+.keypad button[data-op="divide"],
+.keypad button[data-op="multiply"],
+.keypad button[data-op="subtract"],
+.keypad button[data-op="add"],
+.keypad button[data-op="pow"],
+.keypad button[data-op="sqrt"] {
+    background: #ffefb3;
+}
+.keypad button[data-op="equals"] {
+    background: #4CAF50;
+    color: #fff;
+    grid-column: 4 / span 1; /* Ensure it stays in correct column */
+}
+
+/* ----- Responsive Adjustments ----- */
+@media (max-width: 480px) {
+    .calculator {
+        padding: 15px;
+    }
+    .calculator-display {
+        height: 50px;
+        font-size: 1.4rem;
+    }
+    .keypad button {
+        padding: 12px;
+        font-size: 1.2rem;
+    }
+}
+
+/* ----- Fallback for older browsers (IE10+) ----- */
+/* Use simple background and border styles if CSS Grid not supported */
+@supports not (display: grid) {
+    .keypad {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .keypad button {
+        flex: 1 0 23%; /* approximate 4 per row with spacing */
+        margin: 5px;
+    }
+}
+
+/* Ensure focus outline for accessibility */
+.keypad button:focus {
+    outline: 2px solid #2196F3;
+    outline-offset: 2px;
+}
